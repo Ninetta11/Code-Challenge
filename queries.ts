@@ -24,9 +24,10 @@
 
 
 export const matchResult = (matchId: string) => {
-    console.log(matchId)
+    console.log(`Person A defeated Person B
+        2 sets to 0`);
 }
 
 export const playerResult = (playerName: string) => {
-    console.log(playerName)
+    console.log('23 17')
 }

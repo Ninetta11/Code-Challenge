@@ -1,24 +1,27 @@
 
-import { matchResult } from '../queries';
+import { matchResult, playerResult } from '../queries';
 
 describe('matchResult query', () => {
     it('logs match result', () => {
         console.log = jest.fn();
-        const query = 'Match 1';
+        const match = '01';
+        const expectedResult = `Person A defeated Person B
+        2 sets to 0`;
 
-        matchResult(query);
+        matchResult(match);
 
-        expect(console.log).toHaveBeenCalledWith(query);
+        expect(console.log).toHaveBeenCalledWith(expectedResult);
     })
 })
 
 describe('playerResult query', () => {
     it('logs player result', () => {
         console.log = jest.fn();
-        const query = 'Person 1';
+        const playerName = 'Person A';
+        const expectedResult = '23 17'
 
-        matchResult(query);
+        playerResult(playerName);
 
-        expect(console.log).toHaveBeenCalledWith(query);
+        expect(console.log).toHaveBeenCalledWith(expectedResult);
     })
 })
