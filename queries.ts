@@ -1,3 +1,6 @@
+import { fileReader } from './fileHandler';
+import { findMatch } from './utils';
+
 // ### Query match result
 // Query scores for a particular match
 // Prints who defeated whom, and the result of the sets for the match (winning player score first).
@@ -24,8 +27,20 @@
 
 
 export const matchResult = (matchId: string) => {
-    console.log(`Person A defeated Person B
-        2 sets to 0`);
+    const data: string = fileReader();
+
+    const match = findMatch(matchId, data);
+
+    // save match details
+
+
+    // save names of players
+
+
+    // calculate sets
+
+
+
 }
 
 export const playerResult = (playerName: string) => {
