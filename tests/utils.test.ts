@@ -1,4 +1,4 @@
-import { getPlayerNames, getMatchScore } from '../utils/utils';
+import { getPlayerNames, getMatchScore, getPlayerScore } from '../utils/utils';
 
 describe('getPlayerNames', () => {
     it('returns two players names', () => {
@@ -23,6 +23,18 @@ describe('getMatchScore', () => {
 
         expect(player1Set).toEqual(expectedPlayer1Set);
         expect(player2Set).toEqual(expectedPlayer2Set);
+    })
+})
+
+describe('getPlayerScore', () => {
+    it('returns player score', () => {
+        const data = ['Match: 01', 'Person A vs Person B', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',]
+        const playerName = 'Person B';
+        const expectedResult = '3 17';
+
+        const result = getPlayerScore(data, playerName);
+
+        expect(result).toEqual(expectedResult);
     })
 })
 

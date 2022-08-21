@@ -43,10 +43,37 @@ export const getMatchScore = (data: string[]) => {
         }
 
         if (player1Set >= 2 || player2Set >= 2) {
-            return; 
+            return;
         }
 
     })
-    return {player1Set, player2Set};
+    return { player1Set, player2Set };
+}
+
+export const getPlayerScore = (data: string[], playerName: string) => {
+    var playerPoint = '';
+    var opponentPoint = '';
+    var playerPointsWon = 0;
+    var playerPointsLost = 0;
+
+    const { player1, player2 } = getPlayerNames(data[0]);
+    if (playerName === player1) {
+        playerPoint = '0';
+        opponentPoint = '1';
+    } else if (playerName === player2) {
+        playerPoint = '1';
+        opponentPoint = '0';
+    }
+
+    data.forEach(line => {
+        if (line == playerPoint) {
+            playerPointsWon++
+        }
+        if (line == opponentPoint) {
+            playerPointsLost++
+        }
+    })
+
+    return `${playerPointsWon} ${playerPointsLost}`
 }
 

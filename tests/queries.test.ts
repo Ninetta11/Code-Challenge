@@ -28,10 +28,11 @@ describe('matchResult query', () => {
 describe('playerResult query', () => {
     it('logs player result', () => {
         console.log = jest.fn();
-        const playerName = 'Person A';
-        const expectedResult = '23 17'
+        const data = ['Match: 01', 'Person A vs Person B', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '1', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0',]
+        const playerName = 'Person B';
+        const expectedResult = '4 24'
 
-        playerResult(playerName);
+        playerResult(data, playerName);
 
         expect(console.log).toHaveBeenCalledWith(expectedResult);
     })

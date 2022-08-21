@@ -1,4 +1,4 @@
-import { getPlayerNames, getMatchScore } from '../utils/utils';
+import { getPlayerNames, getMatchScore, getPlayerScore } from '../utils/utils';
 
 // ### Query match result
 // Query scores for a particular match
@@ -47,6 +47,15 @@ export const matchResult = (data: string[], matchId: string) => {
     }
 }
 
-export const playerResult = (playerName: string) => {
-    console.log('23 17')
+export const playerResult = (data: string[], playerName: string) => {
+    const startOfRecord = data.findIndex(element => element.includes(playerName));
+    var playerScore: string = '';
+
+    if (startOfRecord === -1) {
+        console.log('Player not found')
+    } else {
+        data = data.slice(startOfRecord);
+        playerScore = getPlayerScore(data, playerName);
+    }
+    console.log(playerScore)
 }
