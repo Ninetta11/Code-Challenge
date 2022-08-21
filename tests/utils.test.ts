@@ -1,40 +1,28 @@
-import { findMatch } from '../utils';
+import { getPlayerNames, getMatchScore } from '../utils';
 
-describe('findMatch', () => {
-    it('returns match data', () => {
-        const matchId = '01';
-        const data =
-            `Match: 01 
-        Person A vs Person B
-        0
-        0
-        0
-        0
-        0
-        0
-        0
-        Match: 02
-        Person A vs Person C
-        0
-        0
-        1
-        1
-        1
-        1
-        `
-        const expectedResult =
-            `01 
-        Person A vs Person B
-        0
-        0
-        0
-        0
-        0
-        0
-        0`
+describe('getPlayerNames', () => {
+    it('returns two players names', () => {
+        const data = 'Person A vs Person B';
+        const expectedPlayer1 = "Person A";
+        const expectedPlayer2 = "Person B";
 
-        const result = findMatch(matchId, data);
+        const { player1, player2 } = getPlayerNames(data);
 
-        expect(result).toMatch(expectedResult);
+        expect(player1).toEqual(expectedPlayer1);
+        expect(player2).toEqual(expectedPlayer2);
     })
 })
+
+describe('getMatchScore', () => {
+    it('returns match result', () => {
+        const data = ['Match: 01', 'Person A vs Person B', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0',]
+        const expectedPlayer1Set = 2;
+        const expectedPlayer2Set = 0;
+
+        const { player1Set, player2Set } = getMatchScore(data);
+
+        expect(player1Set).toEqual(expectedPlayer1Set);
+        expect(player2Set).toEqual(expectedPlayer2Set);
+    })
+})
+
