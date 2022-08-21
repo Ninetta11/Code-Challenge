@@ -1,4 +1,4 @@
-import { getPlayerNames, getMatchScore } from '../utils';
+import { getPlayerNames, getMatchScore } from '../utils/utils';
 
 describe('getPlayerNames', () => {
     it('returns two players names', () => {
